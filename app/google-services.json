@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "414527851885",
-    "project_id": "a-33ea5",
-    "storage_bucket": "a-33ea5.appspot.com"
+    "project_number": "442023702825",
+    "project_id": "a-459f8",
+    "storage_bucket": "a-459f8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:414527851885:android:2dbd6f7b55f77d7e45de64",
+        "mobilesdk_app_id": "1:442023702825:android:8de7fc539b001c6dab0738",
         "android_client_info": {
           "package_name": "com.example.mailapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "414527851885-ggo46im6ep9su9em53ttb4morh6drpfv.apps.googleusercontent.com",
+          "client_id": "442023702825-buk1hm2pu8v40st24638uf78fc81l50f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBItYuDC1VLuzXrpvvNLUCtS6n0Bw1N_pU"
+          "current_key": "AIzaSyDin1RQ4XKcCJKJImkxxQr2WFAVq6dXSdo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "414527851885-ggo46im6ep9su9em53ttb4morh6drpfv.apps.googleusercontent.com",
+              "client_id": "442023702825-buk1hm2pu8v40st24638uf78fc81l50f.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

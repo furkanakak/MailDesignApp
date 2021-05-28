@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,11 +17,26 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     Toolbar toolbar;
     BottomNavigationView bottomNav;
     ExtendedFloatingActionButton fab;
+    RecyclerView recyclerView;
+    MassageAdapter adapter;
+
+    FirebaseDatabase database ;
+    DatabaseReference myRef ;
+    List<MassageModel> modelList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         bottomNav = findViewById(R.id.bottomNavigationView);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         toolbar = findViewById(R.id.toolbar);
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+
         toolbar.setTitle("    Postalarda Arama Yapmak için Tiklayiniz");
       //  toolbar.setSubtitle("alt baslik");
         toolbar.setLogo(R.drawable.menu_icon);
@@ -43,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             }
         });
 
+        pull();
 
 
 
@@ -79,14 +100,46 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        System.out.println(query);
-        return true;
+        return false;
+
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        System.out.println(newText);
+       adapter.getFilter().filter(newText);
         return true;
     }
+
+    public void pull()
+    {
+        modelList = new ArrayList<>();
+        myRef = FirebaseDatabase.getInstance().getReference("users");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                modelList.clear();
+               for (DataSnapshot modelSnapshot : snapshot.getChildren())
+               {
+                   MassageModel model = modelSnapshot.getValue(MassageModel.class);
+                   modelList.add(model);
+                   System.out.println(model.gonderen);
+               }
+
+                recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+               adapter = new MassageAdapter(MainActivity.this,modelList);
+               recyclerView.setAdapter(adapter);
+               adapter.notifyDataSetChanged();
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+    }
+
 
 }

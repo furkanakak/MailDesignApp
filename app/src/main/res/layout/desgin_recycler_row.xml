@@ -8,17 +8,17 @@
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:orientation="vertical"
         android:layout_gravity="center">
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/gmail_icon_2_foreground"
             android:layout_marginLeft="5dp"
-            />
+            app:srcCompat="@mipmap/icon_imageview_round" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -30,7 +30,7 @@
         >
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/gonderen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -52,7 +52,7 @@
                 android:layout_gravity="center"/>
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/konu"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Text YK , Nisan Ayı Özetiniz"
@@ -64,7 +64,7 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/ileti"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="Bu zaman çizelgesi e-postası,gittiğiniz yerlerin"
@@ -79,7 +79,7 @@
 
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/alici"
             android:layout_width="51dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
